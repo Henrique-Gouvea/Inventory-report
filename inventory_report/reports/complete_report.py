@@ -8,8 +8,6 @@ class CompleteReport(SimpleReport):
         companiesQuantityProducts = Counter(
             product["nome_da_empresa"] for product in data
         )
-        print("/////////////////////////////////////////////////")
-        print(companiesQuantityProducts)
         return companiesQuantityProducts
 
     def get_print_quantity(data):
