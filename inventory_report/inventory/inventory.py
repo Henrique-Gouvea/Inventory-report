@@ -5,21 +5,8 @@ from inventory_report.importer.csv_importer import CsvImporter
 from inventory_report.importer.json_importer import JsonImporter
 from inventory_report.importer.xml_importer import XmlImporter
 
-# class BaseImport(ABC):
-#     @abstractmethod
-#     def import_data():
-#         raise NotImplementedError
 
-#     @abstractmethod
-#     def get_simple_report():
-#         raise NotImplementedError
-
-#     @abstractmethod
-#     def get_completed_report():
-#         raise NotImplementedError
-
-
-class Inventory():
+class Inventory:
     @classmethod
     def import_data(cls, file, type_report):
         if type_report == "simples":
@@ -35,3 +22,5 @@ class Inventory():
             return JsonImporter.import_data(file)
         elif file.endswith("xml"):
             return XmlImporter.import_data(file)
+        else:
+            return ValueError("Arquivo inválido")

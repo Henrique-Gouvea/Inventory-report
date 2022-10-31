@@ -5,5 +5,10 @@ import csv
 class CsvImporter(Importer):
     @staticmethod
     def import_data(file):
-        with open(file) as csvfile:
-            return list(csv.DictReader(csvfile))
+        try:
+            if not file.endswith(".csv"):
+                raise ValueError("Arquivo inválido")
+            with open(file) as csvfile:
+                return list(csv.DictReader(csvfile))
+        except IOError:
+            raise ValueError("Problema ao abrir arquivo")
